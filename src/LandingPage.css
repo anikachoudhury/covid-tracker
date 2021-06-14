@@ -1,0 +1,27 @@
+.landingPage {
+    height: 100vh;
+    text-align: center;
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.landingPage_title {
+    font-weight: 600;
+    font-size: 3rem;
+    padding-bottom: 80px;
+    padding-top: 20%;
+    color: #0091ae;
+}
+
+.landingPage_subtitle {
+    font-size: 1.5rem;
+    opacity: 0.6;
+}
+
+.container {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: 100vh;
+}

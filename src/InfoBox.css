@@ -1,7 +1,11 @@
 .infoBox__card {
     height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .infoBox__content {
     text-align: center;
+    
 }

@@ -10,6 +10,7 @@ import InfoBox from './InfoBox';
 import Table from './Table';
 import { sortData } from './util';
 import LineGraph from './LineGraph';
+import LandingPage from './LandingPage';
 import './App.css';
 
 function App() {
@@ -63,38 +64,40 @@ function App() {
   };
 
   return (
-    <div className="app">
+    <div className="appAndLanding">
+      <LandingPage />
+      <div className="app">
+        <div className="app__left">
+          <div className="app__header">
+            <h1>COVID-19 TRACKER</h1>
+            <FormControl className="app__dropdown">
+              <Select variant="outlined" onChange={onCountryChange} value={country}>
+                <MenuItem value="Worldwide">Worldwide</MenuItem>
+                {countries.map((country) => (
+                  <MenuItem value={country.value}>{country.name}</MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+          </div>
 
-      <div className="app__left">
-        <div className="app__header">
-          <h1>COVID-19 TRACKER</h1>
-          <FormControl className="app__dropdown">
-            <Select variant="outlined" onChange={onCountryChange} value={country}>
-              <MenuItem value="Worldwide">Worldwide</MenuItem>
-              {countries.map((country) => (
-                <MenuItem value={country.value}>{country.name}</MenuItem>
-              ))}
-            </Select>
-          </FormControl>
+          <div className="app__stats">
+            <InfoBox bgcolor="info" title="Coronavirus Cases" cases={countryInfo.todayCases} total={countryInfo.cases} />
+            <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
+            <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
+          </div>
+
         </div>
 
-        <div className="app__stats">
-          <InfoBox title="Coronavirus Cases" cases={countryInfo.todayCases} total={countryInfo.cases} />
-          <InfoBox title="Recovered" cases={countryInfo.todayRecovered} total={countryInfo.recovered} />
-          <InfoBox title="Deaths" cases={countryInfo.todayDeaths} total={countryInfo.deaths} />
-        </div>
-
+        <Card className="app__right">
+          <CardContent>
+            <h3 id="livecases">Live cases by country</h3>
+            <Table countries={tableData} />
+            <h3 id="newcases">Worldwide new cases</h3>
+            <LineGraph />
+          </CardContent>
+        </Card>
+        
       </div>
-
-      <Card className="app__right">
-        <CardContent>
-          <h3 id="livecases">Live cases by country</h3>
-          <Table countries={tableData} />
-          <h3 id="newcases">Worldwide new cases</h3>
-          <LineGraph />
-        </CardContent>
-      </Card>
-      
     </div>
   );
 }
