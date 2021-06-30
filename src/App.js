@@ -87,7 +87,7 @@ function App() {
           </div>
 
         </div>
-
+        
         <Card className="app__right">
           <CardContent>
             <h3 id="livecases">Live cases by country</h3>
